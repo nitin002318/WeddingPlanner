@@ -1,0 +1,38 @@
+<% layout('layouts/boilerplate') %>
+<%- include('../partials/navbar') %>
+
+
+<br>
+<br>
+<br>
+<br>
+<div id="container">
+    <img src="https://th.bing.com/th/id/OIP.6Wcbc3oXcBHzjMmPXF_BWgHaHa?w=980&h=980&rs=1&pid=ImgDetMain" alt="Invitation Image">
+    <input type="email" id="emailInput" class="inputField" placeholder="Enter email address">
+    <input type="text" id="subjectInput" class="inputField" placeholder="Subject of the email" value="You're Invited to Celebrate Our Love!">
+    <textarea id="contentInput" class="inputField" rows="5" placeholder="Content of the email">We are thrilled to share the joyous news that we are embarking on a new chapter of our lives together! As we exchange vows and begin our journey as husband and wife, we cordially invite you to join us in celebrating our love and union.</textarea>
+    <button id="sendBtn">Send Message</button>
+</div>
+
+<script>
+    document.getElementById("sendBtn").addEventListener("click", function() {
+        var email = document.getElementById("emailInput").value;
+        var subject = document.getElementById("subjectInput").value;
+        var content = document.getElementById("contentInput").value;
+        if (isValidEmail(email)) {
+            var mailtoLink = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(content);
+            window.location.href = mailtoLink;
+        } else {
+            alert("Please enter a valid email address.");
+        }
+    });
+
+    function isValidEmail(email) {
+        // Basic email validation
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+</script>
+
+</body>
+</html>

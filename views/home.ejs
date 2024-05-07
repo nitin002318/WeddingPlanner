@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding-----Planner</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <header class="head">
+        
+        <a href="#" class="logo"><i class="fas fa-heart"></i>&nbsp;Wed<span>Me</span>Good&nbsp;<i class="fas fa-heart"></i></a>
+        <nav class="navbar">
+            <a href="#" class="active">Home</a>
+            <a href="/products">Venue</a>
+            <a href="/other/invite">E-invite</a>
+            <a href="#contact">Contact</a>
+            <% if(currentUser && currentUser.role === 'seller') { %>
+                <a href="/product/new">ADD</a>
+            <% } %>
+            <div style="display: flex; align-items: center;"> <!-- Inline CSS for alignment -->
+                <% if(!currentUser) { %>
+                    <a href="/login">Login</a>
+                <% } else { %>
+                    <a href="/logout" class="nav-link mx-2">Logout</a>
+                <% } %>
+            </div>
+        </nav>
+        
+        <div id="menu-bar"><i class="fas fa-bars"></i></div>
+      
+        <div id="menu-bar"><i class="fas fa-bars"></i></div>
+    </header>
+    <!---------------------------Home--------------------->
+    <section class="home" id="home">
+        <form action="/products/search" method="GET" class="mb-3">
+            <div class="search-box">
+                <h1>Your Wedding,Your Way</h1>
+                <p>Find the best wedding vendors with thousands of trusted reviews</p>
+                
+        
+                <div class="form-group">
+                    <input type="text" class="form-control" name="query" placeholder="Your location" style="width: 300px; height: 40px;">
+                </div>
+                
+            <button type="submit" class="btn btn-primary btn-lg">Search</button>
+
+        
+             
+            </div>
+        </form>
+    </section>
+
+    <!------------------------services-------------------->
+    <section class="service" id="service">
+        <div class="title">
+            <h1><span>S</span>ervice</h1>
+        </div>
+        <div class="services-row">
+            <div class="services-col">
+                <i class="fas fa-book-open"></i>
+                <h2>invitation</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+            <div class="services-col">
+                <i class="fas fa-camera"></i>
+                <h2>Photography & Video</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+            <div class="services-col">
+                <i class="fas fa-brush"></i>
+                <h2>Beauty & Makeup</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+            <div class="services-col">
+                <i class="fab fa-pagelines"></i>
+                <h2>Wedding flowers</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+            <div class="services-col">
+                <i class="fas fa-birthday-cake"></i>
+                <h2>wedding cake</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+            <div class="services-col">
+                <i class="fas fa-music"></i>
+                <h2>music band</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+            <div class="services-col">
+                <i class="fas fa-utensils"></i>
+                <h2>Catering</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+            <div class="services-col">
+                <i class="fas fa-ring"></i>
+                <h2>Jewellery</h2>
+                <p>Lorem ipsum dolor sit amet, at mei dolore tritani repudiandae.</p>
+            </div>
+        </div>
+    </section>
+
+    
+
+
+    <footer id="contact">
+        <div class="container">
+            <div class="f-container">
+                <h2>WedMeGood - Your Personal Wedding Planner</h2><br>
+                <p>Plan your wedding with Us WedMeGood is an Indian Wedding Planning Website </p>
+                <div>
+                    <button class="btn">Register as a Vendor</button>
+                </div>
+                <div class="social">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-pinterest"></i>
+                </div>
+            </div>
+            <div class="f-container">
+                <h2>Our Location</h2>
+                <a href="#"><i class="fas fa-angle-right"></i>Anand</a>
+                <a href="#"><i class="fas fa-angle-right"></i>Vadodara</a>
+                <a href="#"><i class="fas fa-angle-right"></i>Mumbai</a>
+                <a href="#" "><i class=" fas fa-angle-right "></i>Ahemdabad</a>
+                    <a href="# "><i class="fas fa-angle-right "></i>Surat</a>
+                </div>
+                
+                <div class="f-container ">
+                    <h2>Our Newsletter</h2>
+                    <p>Subscribe for latest updates</p>
+                    <input type="text " placeholder="Enter Your Email ">
+                    <button class="btn ">Subscribe</button>
+                    </div>
+            </div>
+        </footer>
+     
+</body>
+<script>
+     let menu = document.querySelector('#menu-bar');
+    let head = document.querySelector('.head .navbar');
+
+    menu.onclick = () => {
+        head.classList.toggle('active');
+    };
+
+    window.onscroll = () => {
+        head.classList.remove('active');
+        if (window.scrollY > 60) {
+            document.querySelector('#menu-bar').classList.add('active');
+        } else {
+            document.querySelector('#menu-bar').classList.remove('active');
+        }
+    };
+</script>    
+</html>

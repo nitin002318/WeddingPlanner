@@ -1,0 +1,40 @@
+<% layout('layouts/boilerplate') %>
+<%- include('../partials/navbar') %>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1 style="text-align: center;">How many guests are coming</h1> 
+<div class="btn-group" style="display: flex; justify-content: center;">
+    <div class="btn-group" style="margin: 5px;">
+        <button type="button" class="btn btn-primary" style="margin-right: 5px;" onclick="addToCart('100-150', '6635203e344577fd4316792a')">100-150</button>
+        <button type="button" class="btn btn-primary" style="margin-right: 5px;" onclick="addToCart('150-250', '6635203e344577fd4316792b')">150-250</button>
+        <button type="button" class="btn btn-primary" onclick="addToCart('250+', '6635203e344577fd4316792c')">250+</button>
+    </div>
+</div>
+
+<script>
+    function addToCart(category, productId) {
+        // Make an AJAX request to add the product to the cart
+        fetch(`/user/addToCart/${category}/${productId}`, { // Include both category and productId in the URL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to add product to cart');
+            }
+            // Redirect to the cart page after successful addition
+            window.location.href = '/user/cart';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>

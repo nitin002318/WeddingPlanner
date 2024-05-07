@@ -1,0 +1,86 @@
+<% layout('layouts/boilerplate') %>
+<!-- This will add the nav bar from the partials>navbar.ejs file -->
+
+<%- include('../partials/navbar') %>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <h1 class="mt-5">New Venue</h1>
+
+    <form action="/products" class="needs-validation mt-4" method="POST" novalidate>
+        <div class="row mb-3">
+            <label for="name" class="col-sm-2 col-form-label">Name:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" id="naam" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a Name.
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="pic" class="col-sm-2 col-form-label">Image:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="img" id="pic" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide an Image.
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="daam" class="col-sm-2 col-form-label">Price:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="price" id="daam" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a Price.
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="des" class="col-sm-2 col-form-label">Location:</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" name="desc" id="des" rows="3" required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a Location.
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Venue</button>
+    </form>
+</div>
+
+<script>
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+</body>
+</html>

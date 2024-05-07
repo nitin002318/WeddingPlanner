@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate') %>
+<!-- This will add the nav bar from the partials/navbar.ejs file -->
+<div class="container mb-5"> <!-- Added mt-3 class for top margin -->
+    <%- include('../partials/navbar') %>
+</div>
+<br>
+<br>
+<div class="container mt-5">
+    <div class="row">
+        <% for (let item of products) { %>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <img src="<%= item.img %>" class="card-img-top" alt="...">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><%= item.name %></h5>
+                        <h3 class="card-title"><%= item.price %></h3>
+                        <p class="card-text"><%= item.desc %></p>
+                        <div class="mt-auto">
+                            <a href="/products/<%= item._id %>" class="btn btn-primary mb-2">View More</a>
+                            <%if(currentUser&& currentUser.role==='seller') {%>
+                                <form class="d-inline-block" action="/products/<%= item._id %>?_method=DELETE" method="POST"> 
+                                    <button class="btn btn-danger">DELETE</button>
+                                </form>
+                                <%}%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>

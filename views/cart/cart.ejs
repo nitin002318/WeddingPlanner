@@ -1,0 +1,26 @@
+<% layout('layouts/boilerplate') %>
+<%- include('../partials/navbar') %>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div style="padding: 20px;">
+    <% if (user.cart.length > 0) { %>
+        <h2 style="text-align: center; margin-bottom: 20px;">Your booking Information</h2>
+        <ul style="list-style-type: none; padding: 0;">
+            <% for (let item of user.cart) { %>
+                <li style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
+                    <strong>Number of Guests:</strong> <%= item.category %> <br>
+                    <strong>Product Name:</strong> <%= item.name %> <br>
+                    <strong>Price:</strong> <%= item.price %> <br>
+                </li>
+            <% } %>
+        </ul>
+    <% } else { %>
+        <p style="text-align: center;">You don't have any venues selected yet.</p>
+    <% } %>
+</div>
